@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QualiGather</title>
+
+    <!-- Javascript Bases -->
+    <script src="./lib/jquery/jquery-3.7.1.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="./lib/DataTables/dataTables.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./lib/DataTables/dataTables.min.css" />
+
+    <link rel="stylesheet" href="./lib/DataTables/dataTables.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css"
+    />
+    <script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
+  </head>
+  <body style="height: 100%; margin: 0; padding: 0">
+    <div style="background-color: rgb(255, 255, 255)">
+      <nav class="navbar justify-content-end fixed-top">
+        <a class="me-auto">
+          <img src="img/logo.png" alt="ロゴ" style="height: 40px" />
+        </a>
+
+        <a href="index.html"
+          ><button type="button" class="btn btn-dark">ホーム</button></a
+        >
+        <a href="contact.html"
+          ><button type="button" class="btn btn-dark">お問い合わせ</button></a
+        >
+      </nav>
+    </div>
+
+    <main style="padding-top: 56px; width: 100%">
+      <div
+        id="content"
+        class="container-fluid"
+        style="padding: 10px; width: 100%"
+      >
+        <h1 class="text-center">QualiGather</h1>
+        <!-- 折り畳み式条件フォーム -->
+        <div class="text-start my-3">
+          <button
+            class="btn btn-outline-dark"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#searchOffcanvas"
+            aria-controls="searchOffcanvas"
+          >
+            <i class="bi bi-funnel"></i>条件入力フォームを開く/閉じる
+          </button>
+        </div>
+        <div
+          class="offcanvas offcanvas-start"
+          tabindex="-1"
+          id="searchOffcanvas"
+          aria-labelledby="searchOffcanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="searchOffcanvasLabel">
+              条件入力フォーム
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <form id="condition-form" class="row g-3">
+              <!-- チェックボックスグループ -->
+              <div class="col-12 mb-2">
+                <label class="form-label me-2">拠点:</label>
+                <!-- Oyama -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="base-oyama"
+                    checked="checked"
+                    name="base[]"
+                    value="oyama"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: darkblue"
+                    for="base-oyama"
+                    >Oyama</label
+                  >
+                </div>
+                <!-- Nakatsu -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked="checked"
+                    id="base-nakatsu"
+                    name="base[]"
+                    value="nakatsu"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: red"
+                    for="base-nakatsu"
+                    >Nakatsu</label
+                  >
+                </div>
+                <!-- tnwx -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="base-tnwx"
+                    name="base[]"
+                    checked="checked"
+                    value="tnwx"
+                    data-tag="tnwx"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: purple"
+                    for="base-tnwx"
+                    >TNWX</label
+                  >
+                </div>
+                <!-- tnph -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="base-tnph"
+                    checked="checked"
+                    name="base[]"
+                    value="tnph"
+                    data-tag="tnph"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: darkgreen"
+                    for="base-tnph"
+                    >TNPH</label
+                  >
+                </div>
+                <!-- tnth -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="base-tnth"
+                    name="base[]"
+                    checked="checked"
+                    value="tnth"
+                    data-tag="tnth"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: gold"
+                    for="base-tnth"
+                    >TNTH</label
+                  >
+                </div>
+                <!-- tnmi -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="base-tnmi"
+                    name="base[]"
+                    checked="checked"
+                    value="tnmi"
+                    data-tag="tnmi"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: lightseagreen"
+                    for="base-tnmi"
+                    >TNMI</label
+                  >
+                </div>
+                <!-- kobe -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="base-kobe"
+                    name="base[]"
+                    value="kobe"
+                    data-tag="kobe"
+                  />
+                  <label
+                    class="form-check-label"
+                    style="color: brown"
+                    for="base-kobe"
+                    >Kobe</label
+                  >
+                </div>
+              </div>
+              <!-- Line textbox -->
+              <div class="col-md-12">
+                <label for="cond-linecd" class="form-label">Line CD</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cond-linecd"
+                  name="linecd"
+                />
+              </div>
+
+              <!-- Model No textbox -->
+              <div class="col-md-12">
+                <label for="cond-modelnum" class="form-label">Model No</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cond-modelnum"
+                  name="modelnum"
+                />
+              </div>
+
+              <!-- ここで改行 -->
+              <div class="w-100"></div>
+
+              <!-- Start Date textbox -->
+              <div class="col-md-6">
+                <label for="cond-start-date" class="form-label"
+                  >Start Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="cond-start-date"
+                  name="start_date"
+                />
+              </div>
+
+              <!-- End Date textbox -->
+              <div class="col-md-6">
+                <label for="cond-end-date" class="form-label">End Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="cond-end-date"
+                  name="end_date"
+                />
+              </div>
+
+              <!-- チェックボックスグループ -->
+              <div class="col-12 mb-2">
+                <label class="form-label me-2"
+                  >Product Status(Uncheck all boxes to display all
+                  products)</label
+                >
+              </div>
+              <!-- QRA -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="base-qra"
+                  name="base[]"
+                  value="QRA"
+                />
+                <label
+                  class="form-check-label"
+                  style="color: black"
+                  for="base-qra"
+                  >QRA</label
+                >
+              </div>
+
+              <!-- 重品 -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="base-cqi"
+                  name="base[]"
+                  value="CQI"
+                />
+                <label
+                  class="form-check-label"
+                  style="color: black"
+                  for="base-cqi"
+                  >Critical Quality Issue</label
+                >
+              </div>
+              <div
+                class="col-md-12 d-flex align-items-end justify-content-center"
+              >
+                <button type="submit" class="btn btn-primary w-100">
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 切り替えボタン -->
+        <div class="mb-3">
+          <button id="show-grid" class="btn btn-outline-primary">
+            <i class="bi bi-table"></i> グリッド
+          </button>
+          <button id="show-chart" class="btn btn-outline-success">
+            <i class="bi bi-bar-chart-line"></i> チャート
+          </button>
+
+          <span id="search-range-label" class="ms-2">
+            Serch Date : <span id="label-start-date"></span> ～
+            <span id="label-end-date"></span>
+          </span>
+        </div>
+
+        <!-- グリッド（DataTable） -->
+        <div id="grid-area">
+          <table id="app" class="table table-striped table-bordered"></table>
+        </div>
+
+        <!-- チャート -->
+        <div id="chart-area" style="display: none">
+          <div id="main-charts">
+            <div class="row">
+              <div class="col-md-4">
+                <h5>拠点別合計件数</h5>
+                <canvas id="baseCountChart"></canvas>
+              </div>
+              <div class="col-md-8">
+                <h5>時間軸での発生推移</h5>
+                <canvas id="timelineChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- 詳細チャート表示エリア（最初は非表示） -->
+          <div id="detail-charts" style="display: none">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 id="detail-chart-title" class="mb-0"></h5>
+              <button id="detail-back-btn" class="btn btn-secondary">
+                戻る
+              </button>
+            </div>
+            <canvas id="canvas_detailChart"></canvas>
+          </div>
+        </div>
+
+        <!-- チャート詳細モーダル -->
+        <!-- <div
+          class="modal fade"
+          id="detailChartModal"
+          tabindex="-1"
+          aria-labelledby="detailChartLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="detailChartLabel">
+                  ライン別発生件数
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <canvas id="detailChart" width="800" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- ローディング画面 -->
+      <div id="loading-screen">
+        <div class="loading-inner">
+          <div
+            class="spinner-border text-secondary"
+            role="status"
+            style="width: 4rem; height: 4rem"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="loading-text mt-3">Loading...</div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // DataTables描画後に日付フィルターをサーチボックス横に追加
+      $(document).ready(function () {
+        setTimeout(function () {
+          if ($(".dataTables_filter").length && !$(".date-filter").length) {
+            $(".dataTables_filter").append(`
+              <span class="date-filter">
+                <label for="start-date">開始日</label>
+                <input type="date" id="start-date" name="start-date">
+                <label for="end-date">終了日</label>
+                <input type="date" id="end-date" name="end-date">
+              </span>
+            `);
+          }
+        }, 300);
+      });
+    </script>
+
+    <script src="./js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  </body>
+</html>
