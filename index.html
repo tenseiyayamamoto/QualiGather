@@ -27,29 +27,28 @@
     />
     <script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
   </head>
-  <body style="height: 100%; margin: 0; padding: 0">
-    <div style="background-color: rgb(255, 255, 255)">
-      <nav class="navbar justify-content-end fixed-top">
-        <a class="me-auto">
-          <img src="img/logo.png" alt="ロゴ" style="height: 40px" />
+  <body id="app-body">
+    <div id="navbar-container">
+      <nav class="navbar justify-content-between fixed-top">
+        <a class="navbar-brand">
+          <img src="img/logo.png" id="navbar-logo" alt="ロゴ" />
         </a>
 
-        <a href="index.html"
-          ><button type="button" class="btn btn-dark">ホーム</button></a
-        >
-        <a href="contact.html"
-          ><button type="button" class="btn btn-dark">お問い合わせ</button></a
-        >
+        <h1 class="text-center mb-0">QualiGather</h1>
+
+        <div>
+          <a href="index.html"
+            ><button type="button" class="btn btn-dark">ホーム</button></a
+          >
+          <a href="contact.html"
+            ><button type="button" class="btn btn-dark">お問い合わせ</button></a
+          >
+        </div>
       </nav>
     </div>
 
-    <main style="padding-top: 56px; width: 100%">
-      <div
-        id="content"
-        class="container-fluid"
-        style="padding: 10px; width: 100%"
-      >
-        <h1 class="text-center">QualiGather</h1>
+    <main>
+      <div id="content" class="container-fluid">
         <!-- 折り畳み式条件フォーム -->
         <div class="text-start my-3">
           <button
@@ -94,12 +93,7 @@
                     name="base[]"
                     value="oyama"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: darkblue"
-                    for="base-oyama"
-                    >Oyama</label
-                  >
+                  <label class="form-check-label" for="base-oyama">Oyama</label>
                 </div>
                 <!-- Nakatsu -->
                 <div class="form-check form-check-inline">
@@ -111,10 +105,7 @@
                     name="base[]"
                     value="nakatsu"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: red"
-                    for="base-nakatsu"
+                  <label class="form-check-label" for="base-nakatsu"
                     >Nakatsu</label
                   >
                 </div>
@@ -129,12 +120,7 @@
                     value="tnwx"
                     data-tag="tnwx"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: purple"
-                    for="base-tnwx"
-                    >TNWX</label
-                  >
+                  <label class="form-check-label" for="base-tnwx">TNWX</label>
                 </div>
                 <!-- tnph -->
                 <div class="form-check form-check-inline">
@@ -147,12 +133,7 @@
                     value="tnph"
                     data-tag="tnph"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: darkgreen"
-                    for="base-tnph"
-                    >TNPH</label
-                  >
+                  <label class="form-check-label" for="base-tnph">TNPH</label>
                 </div>
                 <!-- tnth -->
                 <div class="form-check form-check-inline">
@@ -165,12 +146,7 @@
                     value="tnth"
                     data-tag="tnth"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: gold"
-                    for="base-tnth"
-                    >TNTH</label
-                  >
+                  <label class="form-check-label" for="base-tnth">TNTH</label>
                 </div>
                 <!-- tnmi -->
                 <div class="form-check form-check-inline">
@@ -183,12 +159,7 @@
                     value="tnmi"
                     data-tag="tnmi"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: lightseagreen"
-                    for="base-tnmi"
-                    >TNMI</label
-                  >
+                  <label class="form-check-label" for="base-tnmi">TNMI</label>
                 </div>
                 <!-- kobe -->
                 <div class="form-check form-check-inline">
@@ -200,12 +171,7 @@
                     value="kobe"
                     data-tag="kobe"
                   />
-                  <label
-                    class="form-check-label"
-                    style="color: brown"
-                    for="base-kobe"
-                    >Kobe</label
-                  >
+                  <label class="form-check-label" for="base-kobe">Kobe</label>
                 </div>
               </div>
               <!-- Line textbox -->
@@ -273,12 +239,7 @@
                   name="base[]"
                   value="QRA"
                 />
-                <label
-                  class="form-check-label"
-                  style="color: black"
-                  for="base-qra"
-                  >QRA</label
-                >
+                <label class="form-check-label" for="base-qra">QRA</label>
               </div>
 
               <!-- 重品 -->
@@ -290,10 +251,7 @@
                   name="base[]"
                   value="CQI"
                 />
-                <label
-                  class="form-check-label"
-                  style="color: black"
-                  for="base-cqi"
+                <label class="form-check-label" for="base-cqi"
                   >Critical Quality Issue</label
                 >
               </div>
@@ -329,7 +287,7 @@
         </div>
 
         <!-- チャート -->
-        <div id="chart-area" style="display: none">
+        <div id="chart-area">
           <div id="main-charts">
             <div class="row">
               <div class="col-md-4">
@@ -343,7 +301,7 @@
             </div>
           </div>
           <!-- 詳細チャート表示エリア（最初は非表示） -->
-          <div id="detail-charts" style="display: none">
+          <div id="detail-charts">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h5 id="detail-chart-title" class="mb-0"></h5>
               <button id="detail-back-btn" class="btn btn-secondary">
@@ -386,9 +344,9 @@
       <div id="loading-screen">
         <div class="loading-inner">
           <div
+            id="loading-spinner"
             class="spinner-border text-secondary"
             role="status"
-            style="width: 4rem; height: 4rem"
           >
             <span class="visually-hidden">Loading...</span>
           </div>

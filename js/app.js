@@ -164,6 +164,7 @@ async function DataSearch() {
       fixedHeader: true,
       searching: true,
       ordering: true,
+      Responsive: true,
       paging: true, // ← trueに変更
       pageLength: 200, // 1ページあたりの件数（例：50件）
       select: true,
@@ -171,6 +172,11 @@ async function DataSearch() {
       deferRender: true,
       scrollY: "60vh",
       dom: "Bfrtip",
+      layout: {
+        topEnd: "search", // 左側に検索欄
+        topEnd: "buttons", // 右側にボタン
+      },
+
       buttons: [
         "colvis",
         {

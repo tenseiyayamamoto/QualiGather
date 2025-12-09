@@ -70,6 +70,8 @@ main {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  padding-top: 56px; 
+  width: 100%"
 }
 
 h1 {
@@ -203,4 +205,77 @@ body {
   /* max-width: 100%;
   max-height: 100%; */
   display: block;
+}
+
+/* QRA と CQI のラベル色 */
+label[for="base-qra"],
+label[for="base-cqi"] {
+  color: black;
+}
+
+label[for="base-oyama"] {
+  color: darkblue;
+}
+
+label[for="base-nakatsu"] {
+  color: red;
+}
+
+label[for="base-tnwx"] {
+  color: purple;
+}
+
+label[for="base-tnph"] {
+  color: darkgreen;
+}
+
+label[for="base-tnth"] {
+  color: goldenrod;
+}
+
+label[for="base-tnmi"] {
+  color: lightseagreen;
+}
+
+label[for="base-kobe"] {
+  color: brown;
+}
+
+/* チャートエリア（初期非表示） */
+#chart-area {
+  display: none;
+}
+
+/* 詳細チャート（初期非表示） */
+#detail-charts {
+  display: none;
+}
+
+/* Body */
+#app-body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ナビゲーションバーコンテナ */
+#navbar-container {
+  background-color: rgb(255, 255, 255);
+}
+
+/* ナビゲーションロゴ */
+#navbar-logo {
+  height: 40px;
+}
+
+/* コンテンツエリア */
+#content {
+  padding: 10px;
+  width: 100%;
+}
+
+/* ローディングスピナー */
+#loading-spinner {
+  width: 4rem;
+  height: 4rem;
 }
